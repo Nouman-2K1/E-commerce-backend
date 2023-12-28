@@ -6,6 +6,7 @@ import dbInit from "./db/init.js";
 import Session from "express-session";
 import SequelizeStore from "connect-session-sequelize";
 import AllRouter from "./Routers/AllRouter.js";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
@@ -31,6 +32,10 @@ app.use(
   })
 );
 mySequalizeStore1.sync({});
+const corsInstance = new cors({
+  origin: ["https://localhost:5173", "http://localhost:5174"],
+});
+app.use(corsInstance);
 app.use("/", AllRouter);
 app.listen(port, (err) => {
   if (!err) {
