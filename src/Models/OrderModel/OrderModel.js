@@ -1,22 +1,19 @@
-import { DataTypes } from "sequelize";
+import sequelize, { DataTypes } from "sequelize";
 import sequelize from "../../db/config.js";
 
-const UserModel = sequelize.define("user", {
-  name: {
+const OrderModel = sequelize.define("order", {
+  paymentMethod: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
+  address: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  password: {
+  Order_status: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 });
 
-UserModel.hasMany(OrderModel);
-OrderModel.belongsTo(UserModel);
-
-export default UserModel;
+export default OrderModel;
