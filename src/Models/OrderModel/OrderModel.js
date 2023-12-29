@@ -1,4 +1,4 @@
-import sequelize, { DataTypes } from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../../db/config.js";
 
 const OrderModel = sequelize.define("order", {
