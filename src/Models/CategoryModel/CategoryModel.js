@@ -6,10 +6,6 @@ const CategoryModel = sequelize.define("category", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  description: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
 });
 
 export default CategoryModel;

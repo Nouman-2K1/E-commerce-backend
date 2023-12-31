@@ -4,9 +4,9 @@ const AuthenticateMiddleware = (req, res, next) => {
   try {
     let token = req.headers.authorization;
     token = token.replace("Bearer ", "");
-    jwt.verify(token, process.env.JWT_SECRET);
+    jwt.verify(token, process.env.JWTSECRET);
 
-    if (!req.session.user || !req.session.token) {
+    if (!req.session.admin || !req.session.token) {
       return res.status(401).json({
         message: "Invalid request",
       });

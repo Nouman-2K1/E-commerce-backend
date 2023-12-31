@@ -4,11 +4,14 @@ const AuthController = {
   registerAdmin: async (req, res) => {
     try {
       const admin = await AuthService.registerAdmin(req.body);
-      return res
-        .status(201)
-        .json({ message: "Admin registrer successfully", admin });
+      return res.status(201).json({ message: "Admin registered successfully" });
     } catch (error) {
-      return res.status(500).json({ message: "Bad Request" });
+      if (error.message === "Admin with this Email already exists") {
+        return res
+          .status(400)
+          .json({ message: "Admin with this email already exists" });
+      }
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   },
   loginAdmin: async (req, res) => {

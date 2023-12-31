@@ -17,6 +17,7 @@ const AdminProductController = {
       const product = await AdminProductService.getAllProduct();
       return res.status(201).json({ product });
     } catch (error) {
+      console.log(error);
       return res
         .status(500)
         .json({ message: "Error occured while getting product", error });

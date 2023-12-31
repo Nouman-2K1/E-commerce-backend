@@ -6,15 +6,20 @@ const AuthService = {
   registerAdmin: async (adminData) => {
     const { name, email, password } = adminData;
     const adminExist = await AdminModel.findOne({ where: { email } });
+
     if (adminExist) {
-      throw new Error("Admin with this Email already exist");
+      throw new Error("Admin with this Email already exists");
     }
+
     const hashedPassword = await hash(password, 10);
-    await AdminModel.create({
+
+    const newAdmin = await AdminModel.create({
       name,
       email,
       password: hashedPassword,
     });
+
+    return newAdmin;
   },
   loginAdmin: async (req, adminData) => {
     const { email, password } = adminData;
