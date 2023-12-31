@@ -33,7 +33,7 @@ app.use(
 );
 mySequalizeStore1.sync({});
 const corsInstance = new cors({
-  origin: ["https://localhost:5173", "http://localhost:5174"],
+  origin: ["http://localhost:5173", "http://localhost:5174"],
 });
 app.use(corsInstance);
 app.use("/", AllRouter);
