@@ -33,19 +33,14 @@ const AdminProductService = {
       const products = await ProductModel.findAll({
         include: [
           {
-            model: ProductCategoryModel,
-            attributes: [createdAt, updatedAt],
-            include: [
-              {
-                model: CategoryModel,
-                attributes: ["name"],
-              },
-            ],
+            model: CategoryModel,
+            attributes: ["name"],
           },
         ],
       });
       return products;
     } catch (error) {
+      console.log(error);
       throw new Error("Error in fetching products");
     }
   },
@@ -93,8 +88,7 @@ const AdminProductService = {
 
       await product.destroy();
     } catch (error) {
-      console.error("Error deleting product:", error);
-      throw error;
+      throw error("Error deleting product");
     }
   },
 };

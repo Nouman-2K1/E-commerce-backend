@@ -14,10 +14,7 @@ const ProductModel = sequelize.define("product", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  discount: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
+
   quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,

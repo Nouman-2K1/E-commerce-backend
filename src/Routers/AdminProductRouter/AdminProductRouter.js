@@ -15,21 +15,18 @@ AdminProductRouter.post(
 AdminProductRouter.get(
   "/product_listing",
   AuthenticateMiddleware,
-  AdminProductValidator.createProduct,
   AdminProductController.getAllProduct
 );
 
 AdminProductRouter.put(
   "/:product_id/update_product",
   AuthenticateMiddleware,
-  AdminProductValidator.createProduct,
   AdminProductController.updateProduct
 );
 
 AdminProductRouter.delete(
   ":product_id/delete_product",
   AuthenticateMiddleware,
-  AdminProductValidator.createProduct,
   AdminProductController.deleteProduct
 );
 
